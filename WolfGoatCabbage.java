@@ -37,7 +37,7 @@ public class WolfGoatCabbage extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		system.out.println("Hello");
+		
 	}
 
 }
