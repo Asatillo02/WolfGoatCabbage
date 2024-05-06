@@ -66,38 +66,38 @@ public class WolfGoatCabbage extends JFrame {
 		resgin.setFont(new Font("Times New Roman", Font.ITALIC, 14));
 		resgin.setHorizontalAlignment(SwingConstants.LEFT);
 		contentPane.add(resgin, BorderLayout.SOUTH);
-		
+		//used Unicode Party website to get emojis for characters 
 		//Goat button
-		JButton btnNewButton = new JButton("Goat");
-		btnNewButton.setFont(new Font("Times New Roman", Font.ITALIC, 14));
-		btnNewButton.setToolTipText("Do not leave him alone with Cabbage");
-		btnNewButton.setBackground(new Color(128, 128, 64));
-		contentPane.add(btnNewButton);
+		JButton Goat = new JButton("🐐 Goat");
+		Goat.setFont(new Font("Segoe UI Emoji", Font.ITALIC, 14));
+		Goat.setToolTipText("Do not leave him alone with Cabbage");
+		Goat.setBackground(new Color(128, 128, 64));
+		contentPane.add(Goat);
 		
 		//wolf button
-		JButton Wolf = new JButton("Wolf");
+		JButton Wolf = new JButton(" 🐺 Wolf");
 		Wolf.setToolTipText("Do not leave him alone with the Goat\r\n");
 		Wolf.setBackground(new Color(192, 192, 192));
 		Wolf.setHorizontalAlignment(SwingConstants.LEADING);
-		Wolf.setFont(new Font("Times New Roman", Font.ITALIC, 14));
+		Wolf.setFont(new Font("Segoe UI Emoji", Font.ITALIC, 14));
 		contentPane.add(Wolf);
 		
 		//Cabbage button
-		JButton Cabbage = new JButton("Cabbage");
+		JButton Cabbage = new JButton("🥬 Cabbage");
 		Cabbage.setBackground(new Color(128, 255, 0));
-		Cabbage.setFont(new Font("Times New Roman", Font.ITALIC, 14));
-		contentPane.add(Cabbage);
+		Cabbage.setFont(new Font("Segoe UI Emoji", Font.ITALIC, 14));
+		contentPane.add(Cabbage, BorderLayout.WEST);
 		
 		//Farmer button
-		JButton Farmer = new JButton("Farmer");
-		Farmer.setFont(new Font("Times New Roman", Font.ITALIC, 14));
+		JButton Farmer = new JButton("🧑‍🌾🏻 Farmer");
+		Farmer.setFont(new Font("Segoe UI Emoji", Font.ITALIC, 14));
 		contentPane.add(Farmer);
 		
 		//river space 
 		JPanel riverPanel = new JPanel();
 		riverPanel.setBackground(Color.BLUE);
 		contentPane.add(riverPanel);
-		riverPanel.setPreferredSize(new Dimension(100,200));
+		riverPanel.setPreferredSize(new Dimension(100,220));
 		
 		//chat gpt uses rightpanel for rightside and leftpanel for leftside 
 		//objects can move from the left side to the right side 
