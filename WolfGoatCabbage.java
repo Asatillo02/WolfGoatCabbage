@@ -22,7 +22,7 @@ public class WolfGoatCabbage extends JFrame {
 	private JPanel contentPane;
 	private JPanel leftside;
 	private JPanel rightside;
-	private JButton resgin;
+	private JButton resign;
 
 	/**
 	 * Launch the application.
