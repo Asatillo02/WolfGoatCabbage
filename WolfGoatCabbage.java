@@ -55,17 +55,17 @@ public class WolfGoatCabbage extends JFrame {
 		
 		
 		
-		//Resign or quit button
-		resgin = new JButton("Resign");
-		resgin.setAlignmentX(Component.CENTER_ALIGNMENT);
-		resgin.setBorderPainted(false);
-		resgin.setBackground(new Color(255, 0, 0));
-		resgin.setVerticalAlignment(SwingConstants.BOTTOM);
-		resgin.setForeground(new Color(0, 0, 0));
-		resgin.setToolTipText("Click the button to see solution!");
-		resgin.setFont(new Font("Times New Roman", Font.ITALIC, 14));
-		resgin.setHorizontalAlignment(SwingConstants.LEFT);
-		contentPane.add(resgin, BorderLayout.SOUTH);
+		// Resign or quit button
+		resign = new JButton("Resign");
+		resign.setAlignmentX(Component.CENTER_ALIGNMENT);
+		resign.setBorderPainted(false);
+		resign.setBackground(new Color(255, 0, 0));
+		resign.setVerticalAlignment(SwingConstants.BOTTOM);
+		resign.setForeground(new Color(0, 0, 0));
+		resign.setToolTipText("Click the button to see solution!");
+		resign.setFont(new Font("Times New Roman", Font.ITALIC, 14));
+		resign.setHorizontalAlignment(SwingConstants.LEFT);
+		contentPane.add(resign, BorderLayout.SOUTH);
 		//used Unicode Party website to get emojis for characters 
 		//Goat button
 		JButton Goat = new JButton("🐐 Goat");
