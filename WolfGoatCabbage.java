@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -14,6 +16,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.border.CompoundBorder;
 import java.awt.FlowLayout;
 import java.awt.Component;
+import javax.swing.JTextArea;
 
 
 public class WolfGoatCabbage extends JFrame {
@@ -22,7 +25,7 @@ public class WolfGoatCabbage extends JFrame {
 	private JPanel contentPane;
 	private JPanel leftside;
 	private JPanel rightside;
-	private JButton resign;
+	private JButton resgin;
 
 	/**
 	 * Launch the application.
@@ -38,6 +41,7 @@ public class WolfGoatCabbage extends JFrame {
 				}
 			}
 		});
+		new GUI();
 	}
 
 	/**
@@ -45,41 +49,42 @@ public class WolfGoatCabbage extends JFrame {
 	 */
 	public WolfGoatCabbage() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(400, 200, 500, 500);
 		contentPane = new JPanel();
 		//Give a title to our puzzle project
-		contentPane.setBorder(new TitledBorder(new CompoundBorder(), "Wolf, Goat and Cabbage Puzzle", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
-
+		contentPane.setBorder(new TitledBorder(new CompoundBorder(), "Wolf, Goat and Cabbage Puzzle", 
+				TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
 		setContentPane(contentPane);
-		contentPane.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		contentPane.setLayout(null);
+		//mainFrame = new JFrame();
 		
 		
-		
-		// Resign or quit button
-		resign = new JButton("Resign");
-		resign.setAlignmentX(Component.CENTER_ALIGNMENT);
-		resign.setBorderPainted(false);
-		resign.setBackground(new Color(255, 0, 0));
-		resign.setVerticalAlignment(SwingConstants.BOTTOM);
-		resign.setForeground(new Color(0, 0, 0));
-		resign.setToolTipText("Click the button to see solution!");
-		resign.setFont(new Font("Times New Roman", Font.ITALIC, 14));
-		resign.setHorizontalAlignment(SwingConstants.LEFT);
-		contentPane.add(resign, BorderLayout.SOUTH);
+		//Resign or quit button
+		resgin = new JButton("Resign");
+		resgin.setAlignmentX(Component.CENTER_ALIGNMENT);
+		resgin.setBorderPainted(false);
+		resgin.setBackground(new Color(255, 0, 0));
+		resgin.setVerticalAlignment(SwingConstants.BOTTOM);
+		resgin.setForeground(new Color(0, 0, 0));
+		resgin.setToolTipText("Click the button to see solution!");
+		resgin.setFont(new Font("Times New Roman", Font.ITALIC, 14));
+		resgin.setHorizontalAlignment(SwingConstants.LEFT);
+		contentPane.add(resgin, BorderLayout.SOUTH);
 		//used Unicode Party website to get emojis for characters 
 		//Goat button
 		JButton Goat = new JButton("🐐 Goat");
 		Goat.setFont(new Font("Segoe UI Emoji", Font.ITALIC, 14));
 		Goat.setToolTipText("Do not leave him alone with Cabbage");
 		Goat.setBackground(new Color(128, 128, 64));
+		Goat.setBounds(200,400,200,70);
 		contentPane.add(Goat);
 		
 		//wolf button
 		JButton Wolf = new JButton(" 🐺 Wolf");
 		Wolf.setToolTipText("Do not leave him alone with the Goat\r\n");
 		Wolf.setBackground(new Color(192, 192, 192));
-		Wolf.setHorizontalAlignment(SwingConstants.LEADING);
 		Wolf.setFont(new Font("Segoe UI Emoji", Font.ITALIC, 14));
+		Wolf.setBounds(200,325,200,70);
 		contentPane.add(Wolf);
 		
 		//Cabbage button
@@ -87,10 +92,12 @@ public class WolfGoatCabbage extends JFrame {
 		Cabbage.setBackground(new Color(128, 255, 0));
 		Cabbage.setFont(new Font("Segoe UI Emoji", Font.ITALIC, 14));
 		contentPane.add(Cabbage, BorderLayout.WEST);
+		Cabbage.setBounds(200, 250, 200, 70);
 		
 		//Farmer button
 		JButton Farmer = new JButton("🧑‍🌾🏻 Farmer");
 		Farmer.setFont(new Font("Segoe UI Emoji", Font.ITALIC, 14));
+		Farmer.setBounds(200, 175, 200, 70);
 		contentPane.add(Farmer);
 		
 		//river space 
@@ -98,14 +105,18 @@ public class WolfGoatCabbage extends JFrame {
 		riverPanel.setBackground(Color.BLUE);
 		contentPane.add(riverPanel);
 		riverPanel.setPreferredSize(new Dimension(100,220));
+		riverPanel.setBounds(700, 100, 300, 800);
+		contentPane.add(riverPanel);
 		
-		//chat gpt uses rightpanel for rightside and leftpanel for leftside 
 		//objects can move from the left side to the right side 
 		leftside = new JPanel();
 		rightside = new JPanel();
 		contentPane.add(leftside);
 		contentPane.add(rightside);
-	
+		
+		//text instructions 
+		//enter the code here 
+		
 		
 	}
 
