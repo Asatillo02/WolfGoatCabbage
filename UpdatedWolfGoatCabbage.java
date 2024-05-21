@@ -177,9 +177,7 @@ public class FarmerPuzzle extends JFrame {
     	int confirmDialog = JOptionPane.showConfirmDialog(null, "Are you sure you want to give up?"
     											, "Resign?", JOptionPane.YES_NO_OPTION);
     	if(confirmDialog == JOptionPane.YES_OPTION) {
-    		stopTimer();
     		showSolution();
-    		resetGame();
     	}
     }
     
