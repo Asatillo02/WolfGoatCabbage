@@ -100,6 +100,7 @@ public class FarmerPuzzle extends JFrame {
             	JOptionPane.showMessageDialog(null, "Your goal is to move all 4 to the other side of the river on the boat.\n"
             			+ "However, the boat only allows the Farmer to take either the Goat and Cabbage, the Goat and Wolf, or Wolf and Cabbage at the same time. The boat will not move without the farmer!\n"
             			+ "If the Goat and Cabbage are left alone, the goat will eat the cabbage. If the Goat and Wolf are left alone, the wolf will eat the goat.\n"
+				+ "To select multiple elements, hold CTRL (if on Windows/Linus) or Command (if on Mac) while selecting elements.\n"
             			+ "\nAnd don't worry, your timers been paused! 😉 It'll resume when you press 'OK'. Good luck! Try for that record!"
 						, "Instructions", JOptionPane.OK_OPTION);
             	startTimer();
