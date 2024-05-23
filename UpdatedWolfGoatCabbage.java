@@ -1,4 +1,4 @@
-package project;
+package updated;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -20,7 +20,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 
-public class WolfGoatCabbage extends JFrame {
+public class FarmerPuzzle extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel leftBank;
     private JPanel rightBank;
@@ -40,7 +40,7 @@ public class WolfGoatCabbage extends JFrame {
     private DefaultListModel<String> rightListModel;
     private DefaultListModel<String> boatListModel;
     
-    public WolfGoatCabbage() {
+    public FarmerPuzzle() {
         setTitle("Farmer, Wolf, Goat, and Cabbage Puzzle");
         setSize(800, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -265,10 +265,11 @@ public class WolfGoatCabbage extends JFrame {
 
         if ((goatOnLeft && wolfOnLeft && farmerOnRight) || (goatOnRight && wolfOnRight && farmerOnLeft)) {
         	JOptionPane.showMessageDialog(this, "The wolf ate the goat", "Error", JOptionPane.ERROR_MESSAGE);
+        	resetGame();
         }
         if ((goatOnLeft && cabbageOnLeft && farmerOnRight) || (goatOnRight && cabbageOnRight && farmerOnLeft)) {
         	JOptionPane.showMessageDialog(this, "The goat ate the cabbage", "Error", JOptionPane.ERROR_MESSAGE);
-            
+        	resetGame();
         }
         return true;
     }
@@ -294,7 +295,7 @@ public class WolfGoatCabbage extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new WolfGoatCabbage().setVisible(true);
+                new FarmerPuzzle().setVisible(true);
             }
         });
     }
