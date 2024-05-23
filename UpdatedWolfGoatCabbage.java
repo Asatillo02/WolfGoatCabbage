@@ -19,7 +19,6 @@ import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
-import java.util.Scanner;
 
 public class WolfGoatCabbage extends JFrame {
     private static final long serialVersionUID = 1L;
@@ -95,12 +94,11 @@ public class WolfGoatCabbage extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 stopTimer();
                 JOptionPane.showMessageDialog(null, "Your goal is to move all 4 to the other side of the river on the boat.\n"
-            			+ "However, the boat only allows the Farmer to take either the Goat and Cabbage, the Goat and Wolf, or Wolf and Cabbage at the same time. The boat will not move without the farmer!\n"
-            			+ "If the Goat and Cabbage are left alone, the goat will eat the cabbage. If the Goat and Wolf are left alone, the wolf will eat the goat.\n"
-				        + "To select multiple elements, hold CTRL (if on Windows/Linus) or Command (if on Mac) while selecting elements.\n"
-            			+ "\nAnd don't worry, your timers been paused! 😉 It'll resume when you press 'OK'. Good luck! Try for that record!"
-						, "Instructions", JOptionPane.OK_OPTION);
-            	startTimer();
+                        + "However, the boat only allows the Farmer to take either the Goat and Cabbage, the Goat and Wolf, or Wolf and Cabbage at the same time. The boat will not move without the farmer!\n"
+                        + "If the Goat and Cabbage are left alone, the goat will eat the cabbage. If the Goat and Wolf are left alone, the wolf will eat the goat.\n"
+                        + "\nAnd don't worry, your timer has been paused! 😉 It'll resume when you press 'OK'. Good luck! Try for that record!",
+                        "Instructions", JOptionPane.OK_OPTION);
+                startTimer();
             }
         });
 
@@ -177,49 +175,41 @@ public class WolfGoatCabbage extends JFrame {
     // Move action method
     private void moveAction(JList<String> leftList, JList<String> rightList, JList<String> boatList) {
         List<String> leftselect = leftList.getSelectedValuesList();
-        List<String> boatselect = boatList.getSelectedValuesList();
         List<String> rightselect = rightList.getSelectedValuesList();
-        
-        if (leftselect.isEmpty() && rightselect.isEmpty() && boatselect.isEmpty()) {
+
+
+        if (leftselect.isEmpty() && rightselect.isEmpty()) {
             JOptionPane.showMessageDialog(this, "No item selected!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Check invalid moves and conditions
-        if (boatListModel.contains("🧑‍🌾 Farmer") && (boatListModel.contains("🐺 Wolf") && boatListModel.contains("🐐 Goat"))) {
-            JOptionPane.showMessageDialog(this, "The wolf ate the goat", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        } else if (boatListModel.contains("🧑‍🌾 Farmer") && (boatListModel.contains("🐐 Goat") && boatListModel.contains("🥬 Cabbage"))) {
-            JOptionPane.showMessageDialog(this, "The goat ate the cabbage", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        if (leftselect.size() > 2 || boatListModel.size() > 2) {
-            JOptionPane.showMessageDialog(this, "You can only move up to 2 items at a time!", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        if (!boatListModel.contains("🧑‍🌾 Farmer") && (boatListModel.size() > 1 || !boatselect.isEmpty())) {
+        // Checks for invalid moves and conditions like leaving the goat alone with the wolf 
+        isSafe();
+        if (!leftselect.contains("🧑‍🌾 Farmer") && !rightselect.contains("🧑‍🌾 Farmer")) {
             JOptionPane.showMessageDialog(this, "You forgot to take the farmer!", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
-        // Moving items in left bank
+        //limit the selection to 2 items
+        if(leftselect.size() > 2 || rightselect.size() > 2) {
+        	 JOptionPane.showMessageDialog(this, "You can only make 2 selections!", "Error", JOptionPane.ERROR_MESSAGE);
+             return;
+        	
+        }
+        
+        // Moving items from left to right bank
         for (String item : leftselect) {
-            boatListModel.addElement(item);
+            rightListModel.addElement(item);
             leftListModel.removeElement(item);
         }
-
-        // Moving items from right bank
-        for (String item : rightselect) {
-            boatListModel.addElement(item);
-            rightListModel.removeElement(item);
+        //Moving items from right to left bank 
+        for (String item: rightselect) {
+        	leftListModel.addElement(item);
+        	rightListModel.removeElement(item);
         }
-
-        // Moving items from boat list to right bank
-        for (String item : boatselect) {
-            rightListModel.addElement(item);
-            boatListModel.removeElement(item);
-        }
+        
+        // Check if the move is safe
+        isSafe();
         
         checkGameOver();
     }
@@ -259,6 +249,27 @@ public class WolfGoatCabbage extends JFrame {
         if (leftListModel.isEmpty() && boatListModel.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Hall of Fame:\n\nName: " + name + "\nTime taken: " + secondsPassed + " seconds", "Hall of Fame", JOptionPane.INFORMATION_MESSAGE);
         }
+    }
+    
+    private boolean isSafe() {
+        boolean farmerOnLeft = leftListModel.contains("🧑‍🌾 Farmer"); 
+        boolean wolfOnLeft = leftListModel.contains("🐺 Wolf"); 
+        boolean goatOnLeft = leftListModel.contains("🐐 Goat"); 
+        boolean cabbageOnLeft = leftListModel.contains("🥬 Cabbage");
+
+        boolean farmerOnRight = rightListModel.contains("🧑‍🌾 Farmer");
+        boolean wolfOnRight = rightListModel.contains("🐺 Wolf");
+        boolean goatOnRight = rightListModel.contains("🐐 Goat");
+        boolean cabbageOnRight = rightListModel.contains("🥬 Cabbage");
+
+        if ((goatOnLeft && wolfOnLeft && farmerOnRight) || (goatOnRight && wolfOnRight && farmerOnLeft)) {
+        	JOptionPane.showMessageDialog(this, "The wolf ate the goat", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        if ((goatOnLeft && cabbageOnLeft && farmerOnRight) || (goatOnRight && cabbageOnRight && farmerOnLeft)) {
+        	JOptionPane.showMessageDialog(this, "The goat ate the cabbage", "Error", JOptionPane.ERROR_MESSAGE);
+            
+        }
+        return true;
     }
     
     private void resetGame() {
