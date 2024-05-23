@@ -192,7 +192,7 @@ public class FarmerPuzzle extends JFrame {
         }
         
         //limit the selection to 2 items
-        if(leftselect.size() > 2 || rightselect.size() > 2) {
+        if (leftselect.size() > 2 || rightselect.size() > 2) {
         	 JOptionPane.showMessageDialog(this, "You can only make 2 selections!", "Error", JOptionPane.ERROR_MESSAGE);
              return;
         	
