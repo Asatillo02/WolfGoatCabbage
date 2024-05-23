@@ -267,7 +267,7 @@ public class FarmerPuzzle extends JFrame {
         	JOptionPane.showMessageDialog(this, "The wolf ate the goat", "Error", JOptionPane.ERROR_MESSAGE);
         	resetGame();
         }
-        if ((goatOnLeft && cabbageOnLeft && farmerOnRight) || (goatOnRight && cabbageOnRight && farmerOnLeft)) {
+        else if ((goatOnLeft && cabbageOnLeft && farmerOnRight) || (goatOnRight && cabbageOnRight && farmerOnLeft)) {
         	JOptionPane.showMessageDialog(this, "The goat ate the cabbage", "Error", JOptionPane.ERROR_MESSAGE);
         	resetGame();
         }
