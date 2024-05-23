@@ -129,14 +129,16 @@ public class FarmerPuzzle extends JFrame {
                 showHallOfFame();
             }
         });
-        
+
+        // Resets game
         resetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 resetGame();
             }
         });
-        
+
+        // Adds buttons to GUI
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(instructButton);
         buttonPanel.add(moveButton);
@@ -215,6 +217,7 @@ public class FarmerPuzzle extends JFrame {
         checkGameOver();
     }
 
+    // Asks if player wants to give up
     private void Resignation() {
         int confirmDialog = JOptionPane.showConfirmDialog(null, "Are you sure you want to give up?", "Resign?", JOptionPane.YES_NO_OPTION);
         if (confirmDialog == JOptionPane.YES_OPTION) {
@@ -224,6 +227,7 @@ public class FarmerPuzzle extends JFrame {
         }
     }
 
+    // Shows solution should PLayer give up; Then resets game
     private void showSolution() {
         JOptionPane.showMessageDialog(this, "Solution: \n1. Farmer and Goat go to the right\n" +
                 "2. Farmer returns alone\n" +
@@ -236,6 +240,7 @@ public class FarmerPuzzle extends JFrame {
         resetGame();
     }
 
+    // Method to check if Player has won (all elements put onto right bank, without triggering lose conditions)
     private void checkGameOver() {
         if (leftListModel.isEmpty() && boatListModel.isEmpty()) {
             stopTimer();
@@ -251,7 +256,8 @@ public class FarmerPuzzle extends JFrame {
             JOptionPane.showMessageDialog(this, "Hall of Fame:\n\nName: " + name + "\nTime taken: " + secondsPassed + " seconds", "Hall of Fame", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-    
+
+    // Lose/win conditions
     private boolean isSafe() {
         boolean farmerOnLeft = leftListModel.contains("🧑‍🌾 Farmer"); 
         boolean wolfOnLeft = leftListModel.contains("🐺 Wolf"); 
@@ -273,7 +279,8 @@ public class FarmerPuzzle extends JFrame {
         }
         return true;
     }
-    
+
+    // Resets game; All elements put into left bank
     private void resetGame() {
         leftListModel.clear();
         rightListModel.clear();
@@ -291,6 +298,7 @@ public class FarmerPuzzle extends JFrame {
         repaint();
     }
 
+    // Main
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
