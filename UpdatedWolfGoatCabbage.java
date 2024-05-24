@@ -46,7 +46,7 @@ public class WolfGoatCabbage extends JFrame {
     private DefaultListModel<String> rightListModel;
     private DefaultListModel<String> boatListModel;
     
-    public FarmerPuzzle() {
+    public WolfGoatCabbage() {
         setTitle("Farmer, Wolf, Goat, and Cabbage Puzzle");
         setSize(800, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -309,7 +309,7 @@ public class WolfGoatCabbage extends JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new FarmerPuzzle().setVisible(true);
+                new WolfGoatCabbage().setVisible(true);
             }
         });
     }
