@@ -1,4 +1,4 @@
-package updated;
+package project;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -20,7 +20,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 
 
-public class FarmerPuzzle extends JFrame {
+public class WolfGoatCabbage extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel leftBank;
     private JPanel rightBank;
