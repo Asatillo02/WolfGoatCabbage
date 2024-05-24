@@ -1,3 +1,9 @@
+/*
+Helper functions for creating the logs and tracking game progress
+@file WolfGaotCabbage.java
+@author Desiree Caceres, Asatillo Lutfulloev, Giorgio Wirawan
+@Final version May, 2024
+*/
 package project;
 
 import java.awt.BorderLayout;
